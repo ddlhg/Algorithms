@@ -10,5 +10,3 @@ This repository is dedicated to tracking my data structures and algorithms pract
 - [Euclidian Algorithm ](https://github.com/ddlhg/Practice-Algorithms/blob/main/EEA) - GCD of two integers.
 - [Two Largest](https://github.com/ddlhg/Practice-Algorithms/blob/main/Two%20Largest) - Finding 2 largest numbers in a list.
 - [Modular Exponentiation](https://github.com/ddlhg/Practice-Algorithms/blob/main/ME) - Calculates a^k mod n.
-- 
-
