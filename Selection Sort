@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    int* array = NULL;
+
+    //ask the user for array length
+    cout << "How many numbers do want your list to have? ";
+    cin >> n;
+    array = new int[n]; //declares n as array's length
+
+    cout << "\nYou will enter " << n << " numbers.\n"; //ask for numbers in the array
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\nEnter number : ";
+        cin >> array[i]; //stores elements in array
+    }
+    
+    cout <<"\nUnsorted array is:\t"; //prints unsorted array
+    for (int i = 0; i < n; i++){ cout << array[i] << "\t";}
+
+    //selection sort
+    for (int i = 0; i < n - 2; i++) {
+        int *A=array;
+        int maxIndex = i;
+
+        for (int j = i + 1; j < n-1; j++)
+        {
+            if (array[j] > A[maxIndex]) {
+                maxIndex = j;   
+            }
+        }
+        int temp = A[i];
+        A[i] = A[maxIndex];
+        A[maxIndex] = temp;
+    }
+
+    cout << endl << "\nSorted array is:\t";   //prints sorted array
+    for (int i = 0; i < n; i++){ cout << array[i] << "\t"; }
+
+    return 0;
+}
