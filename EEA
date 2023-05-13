@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int EEA(int a, int b);
+
+int main()
+{
+    int a, b;
+    cout << "Please enter two integers: " << endl;
+    cin >> a >> b;
+    EEA(a, b); //calling function
+    return 0;
+}
+
+int EEA(int a, int b)
+{
+    int q, s, old_s, t, old_t, r, old_r, temp;
+    s = 0;
+    old_s = 1;
+    t = 1;
+    old_t = 0;
+    r = b;
+    old_r = a;
+    while (r != 0)
+    {
+        q = old_r / r;
+        temp = r;
+        r = old_r - (q * r);
+        old_r = temp;
+        temp = s;
+        s = old_s - (q * s);
+        old_s = temp;
+        temp = t;
+        t = old_t - (q * t);
+        old_t = temp;
+    }
+    cout << "GCD("<<a<<","<<b<<")" << " = "<<old_r << endl;
+    cout << "GCD = " << "(" << old_s << ")" << a << " + " << "(" << old_t << ")" << b << endl;
+    return(t, s);
+}
