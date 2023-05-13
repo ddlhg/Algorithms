@@ -1,0 +1,114 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+using namespace std;
+
+//structure of a node
+struct doubleLinkList {
+    int data; //data of the node
+    struct doubleLinkList* right; //address of the right node
+    struct doubleLinkList* left;
+};
+typedef struct doubleLinkList node;
+node* start = NULL;
+
+//Function to create the list
+void createList(int n);
+
+//Function to create a node
+void getNode(int& newNode);
+
+//Funnction that displays the linked list
+void display();
+
+//function to see how many nodes we have
+int countNode(node* start);
+
+//Function to delete a node in the middle
+void deleteAtLast();
+
+//Function to inser a node in the middle
+void insertAtBegining();
+
+int main() {
+    int n;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
+    cout << endl;
+    createList(n);
+    deleteAtLast();
+    insertAtBegining();
+    display();
+
+    return 0;
+}
+
+doubleLinkList* getNode() {
+    node* newNode;
+    newNode = (node*)malloc(sizeof(node));
+    cout << "Input new data for node: ";
+    cin >> newNode->data;
+    newNode->right = NULL;
+    newNode->left = NULL;
+    return newNode;
+}
+
+void createList(int n) {
+    int i;
+    node* newNode;
+    node* temp;
+    for (i = 0; i < n; i++) {
+        newNode = getNode();
+        if (start == NULL)
+        {
+            start = newNode;
+        }
+        else {
+            temp = start;
+            while (temp->right) {
+                temp = temp->right;
+            }
+            temp->right = newNode;
+            newNode->left = temp;
+        }
+    }
+}
+
+void deleteAtLast(){
+    if (start == NULL) {
+        cout << "empty list";
+        return;
+    }
+    node* temp, * prev;
+    temp = start;
+    while (temp->right) {
+        temp = temp->right; //shift for one position
+    }
+    temp->left->right = NULL;
+    free(temp);
+    cout << "End node deleted\n";
+}
+
+void insertAtBegining(){
+    node* newNode;
+    newNode = getNode();
+    if (start == NULL) { //empty list
+        start = newNode;
+    }
+    else {
+        newNode->right = start;
+        start->left = newNode;
+        start = newNode;
+    }
+}
+
+
+void display(){
+    node* temp;
+    temp = start;
+    cout << "\nElements of the list from left to right are: \n";
+    while (temp != NULL) {
+        cout << "Data = " << temp->data << "\n";
+        temp = temp->right;
+    }
+}
